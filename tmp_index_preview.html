@@ -1,0 +1,62 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+  <div id="bg-stars"></div>
+
+  <main class="stage">
+    <div class="card">
+      <h1 class="title">Happy Birthday,</h1>
+      <h2 id="name" class="name">My Loving Wife</h2>
+      <p id="message" class="message" data-text="May your day be filled with love, laughter and all your favorite things. You mean everything to me."> </p>
+
+      <div class="controls">
+        <div class="controls-grid">
+          <button id="celebrateBtn" class="btn">Play & Celebrate</button>
+          <button id="fireworksBtn" class="btn small">Fireworks</button>
+          <button id="twinkleBtn" class="btn small">Twinkle Lights</button>
+          <button id="slowHeartsBtn" class="btn small">Slow Hearts</button>
+          <button id="uploadBtn" class="btn small">Upload Photo</button>
+          <button id="saveBtn" class="btn small">Save as PNG</button>
+        </div>
+        <input id="photoUpload" type="file" accept="image/*" style="display:none" />
+      </div>
+    </div>
+
+    <div id="hearts"></div>
+    <div id="balloons"></div>
+    <div id="twinkles" aria-hidden="true"></div>
+  </main>
+
+  <!-- Optional: add a file at src/audio/happy-birthday.mp3 -->
+  <audio id="music" src="audio/happy-birthday.mp3" preload="auto"></audio>
+
+  <!-- html2canvas (for saving the card as PNG) -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday, My Love!</h1>
+        <p>Wishing you a day filled with love, joy, and all your favorite things.</p>
+        <p>May this year bring you closer to your dreams!</p>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

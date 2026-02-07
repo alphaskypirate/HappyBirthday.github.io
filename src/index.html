@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- decorative/background layers -->
+  <canvas id="bg-particles"></canvas>
+  <div id="bg-gradient" aria-hidden="true"></div>
+  <div id="bg-stars"></div>
+  <div id="sparkles" aria-hidden="true"></div>
+  <canvas id="confetti"></canvas>
+
+  <main class="stage">
+    <div class="card">
+      <h1 class="title">Happy Birthday,</h1>
+      <h2 id="name" class="name">My Loving Wife</h2>
+      <p id="message" class="message" data-text="May your day be filled with love, laughter and all your favorite things. You mean everything to me."> </p>
+
+      <div class="controls">
+        <button id="celebrateBtn" class="btn">Play & Celebrate</button>
+      </div>
+    </div>
+
+    <div id="hearts"></div>
+    <div id="balloons"></div>
+  </main>
+
+  <!-- Optional: add a file at src/audio/happy-birthday.mp3 -->
+  <audio id="music" src="audio/happy-birthday.mp3" preload="auto"></audio>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

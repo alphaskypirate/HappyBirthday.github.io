@@ -1,0 +1,22 @@
+{
+  "name": "happy-birthday-web",
+  "version": "1.0.0",
+  "description": "A simple web project to display a Happy Birthday message for my loving wife.",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'Build step can be added here.'"
+  },
+  "keywords": [
+    "birthday",
+    "happy birthday",
+    "wife",
+    "celebration"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}

@@ -1,0 +1,228 @@
+:root{
+  --bg1:#1b2735;
+  --bg2:#0f2027;
+  --accent:#ff6b81;
+  --accent2:#ffd166;
+  --glass: rgba(255,255,255,0.06);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body,#confetti{height:100%}
+body{
+  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(135deg,var(--bg1),var(--bg2));
+  color:#fff;
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* animated background gradient */
+.bg-gradient-anim{
+  position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:0.95;
+  background: linear-gradient(120deg,#0f2027 0%, #203a43 40%, #2c5364 60%, #5c258d 100%);
+  background-size: 300% 300%;
+  animation: gradientShift 18s ease infinite;
+}
+@keyframes gradientShift{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* layered starfields for depth */
+.stars-layer{position:fixed;inset:0;z-index:-1;pointer-events:none;}
+.stars-layer .stars{position:absolute;inset:0;background-repeat:repeat;opacity:0.14}
+.stars-layer .stars.slow{background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px; animation: driftSlow 80s linear infinite}
+.stars-layer .stars.mid{background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 28px 28px; animation: driftMid 120s linear infinite}
+.stars-layer .stars.fast{background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 20px 20px; animation: driftFast 40s linear infinite}
+@keyframes driftSlow{from{transform:translateY(0)}to{transform:translateY(-600px)}}
+@keyframes driftMid{from{transform:translateX(0)}to{transform:translateX(-900px)}}
+@keyframes driftFast{from{transform:translateY(0)}to{transform:translateY(900px)}}
+
+/* sparkle layer for tiny moving lights */
+.sparkles{position:fixed;inset:0;pointer-events:none;z-index:5;mix-blend-mode:screen}
+.sparkles .spark{position:absolute;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.9);filter:blur(0.6px);opacity:0.0;transform:translate(-50%,-50%) scale(0.8);}
+.sparkles .spark.glow{box-shadow:0 0 10px rgba(255,210,150,0.55)}
+
+/* small parallax hint for pointer movement */
+.parallax{transform:translate3d(0,0,0);transition:transform 0.12s linear}
+
+/* subtle star background */
+#bg-stars{
+  position:fixed;inset:0;pointer-events:none;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 30px 30px;
+  mix-blend-mode:screen;
+  opacity:0.12;
+}
+
+/* center stage */
+.stage{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:2rem;
+}
+
+/* glass card */
+.card{
+  width:min(900px,95%);
+  max-width:980px;
+  padding:3.2rem;
+  border-radius:20px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  box-shadow: 0 8px 40px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.03);
+  text-align:center;
+  position:relative;
+  overflow:visible;
+  backdrop-filter: blur(6px) saturate(120%);
+}
+
+/* title and name */
+.title{
+  font-family: 'Poppins';
+  font-weight:600;
+  letter-spacing:1px;
+  font-size:2.6rem;
+  margin-bottom:0.4rem;
+  color:linear-gradient(90deg,var(--accent),var(--accent2));
+}
+.name{
+  font-family:'Great Vibes', cursive;
+  font-size:4.2rem;
+  margin-bottom:0.6rem;
+  color:var(--accent);
+  text-shadow: 0 6px 30px rgba(255,107,129,0.15);
+}
+
+/* gradient underline */
+.card::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:-18px;
+  width:60%;
+  height:6px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  filter:blur(10px);
+  border-radius:999px;
+}
+
+/* message block and typewriter caret */
+.message{
+  margin:1.2rem auto 1.8rem;
+  font-size:1.05rem;
+  max-width:760px;
+  line-height:1.5;
+  color:rgba(255,255,255,0.92);
+  min-height:72px;
+  position:relative;
+  letter-spacing:0.2px;
+}
+.message.caret::after{
+  content:"";
+  display:inline-block;
+  width:2px;height:1.1em;
+  background:var(--accent2);
+  margin-left:4px;
+  animation: blink 1s steps(2) infinite;
+  vertical-align:bottom;
+}
+@keyframes blink{50%{opacity:0}}
+
+/* celebrate button */
+.btn{
+  background: linear-gradient(90deg,var(--accent),#ff9aa2);
+  border:none;padding:0.9rem 1.6rem;border-radius:999px;
+  color:#111;font-weight:600;font-size:1rem;cursor:pointer;
+  box-shadow: 0 8px 20px rgba(255,107,129,0.12);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.btn:active{transform:translateY(2px)}
+.btn:hover{box-shadow:0 16px 30px rgba(255,107,129,0.18)}
+
+/* hearts and balloons containers */
+#hearts, #balloons{
+  pointer-events:none;position:fixed;inset:0;overflow:hidden;
+}
+
+/* heart style created in JS using CSS variables for color */
+.heart{
+  position:absolute;
+  width:36px;height:36px;
+  transform:translate(-50%,-50%) scale(0.9);
+  animation: floatUp linear forwards;
+  filter:drop-shadow(0 8px 18px rgba(0,0,0,0.35));
+}
+.heart::before,.heart::after{
+  content:"";position:absolute;background:var(--c,#ff6b81);
+  border-radius:50%;
+  width:18px;height:18px;left:9px;top:0;
+}
+.heart::after{left:0;top:9px;}
+
+/* hearts float */
+@keyframes floatUp{
+  0%{opacity:0; transform:translate(-50%,10px) scale(0.8) rotate(0deg)}
+  10%{opacity:1}
+  100%{opacity:0; transform:translate(-50%,-140vh) scale(1.05) rotate(360deg)}
+}
+
+/* balloon style */
+.balloon{
+  position:absolute;width:56px;height:72px;border-radius:60% 60% 55% 55%;
+  background:linear-gradient(180deg,var(--c,#ffd166),#ff9a66);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  transform:translate(-50%,0);
+  animation: rise 10s linear forwards;
+}
+.balloon::after{
+  content:"";position:absolute;bottom:-20px;left:50%;width:2px;height:20px;background:rgba(255,255,255,0.2);transform:translateX(-50%);
+}
+@keyframes rise{
+  0%{transform:translate(-50%,120vh) scale(0.95)}
+  100%{transform:translate(-50%,-120vh) scale(1)}
+}
+
+/* confetti canvas on top */
+#confetti{
+  position:fixed;inset:0;z-index:40;pointer-events:none;
+}
+
+/* responsive tweaks */
+@media (max-width:520px){
+  .name{font-size:2.4rem}
+  .card{padding:2rem}
+  .title{font-size:1.8rem}
+}
+
+body {
+    background-color: #f0e68c;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    color: #ff69b4;
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #333;
+    font-size: 24px;
+}
+
+.birthday-message {
+    border: 2px solid #ff69b4;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fff;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
